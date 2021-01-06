@@ -1,0 +1,62 @@
+<main class="main">
+  <div class="alert-messages">
+    <p class="alert part-two"></p>
+  </div>
+  <% if(feedbackMsg.length) {%>
+  <div class="alert-messages">
+    <p class="alert part-two feedback show">
+      <%- feedbackMsg %>
+    </p>
+  </div>
+  <% } %>
+  <!-- projects-section -->
+  <section class="wrappper contact" data-aos="fade-up">
+    <img src="/public/images/right-vector.svg" class="right-vector" alt="" />
+    <div class="heading">
+      <h2>Contact Me</h2>
+    </div>
+
+    <form action="/contact" method="POST" class="contact-form container">
+      <div class="form-fields">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Your Full Name Eg: John Doe"
+            class="form-input"
+            id="fullName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="Your Current Email"
+            name="email"
+            class="form-input"
+            id="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Feedback</label>
+          <textarea
+            name="feedback"
+            maxlength="150"
+            class="form-input"
+            cols="30"
+            rows="10"
+            placeholder="Feedback's Are Highly Appreciated"
+            id="feedback"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn" value="Send" />
+        </div>
+      </div>
+      <div class="image">
+        <img src="/public/images/profile-img.jpg" alt="" />
+      </div>
+    </form>
+  </section>
+</main>

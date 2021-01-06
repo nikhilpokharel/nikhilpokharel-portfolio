@@ -1,0 +1,263 @@
+@mixin heading {
+  h2 {
+    padding: 3.4rem 0rem;
+    font-family: $Font;
+    font-weight: 800;
+    font-size: 2.6rem;
+    text-transform: uppercase;
+    color: #eeeeee;
+    a {
+      color: #eeeeee;
+      margin-left: 1rem;
+    }
+    @media (max-width: 850px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+@mixin editor_main {
+  .ck-editor__editable {
+    min-height: 280px !important;
+  }
+  .ck {
+    background: $Primary !important;
+    color: $Color !important;
+    * {
+      color: $Color !important;
+    }
+    border-color: $Secondary !important;
+  }
+
+  .ck-toolbar__items {
+    background: $Primary !important;
+    .ck-button {
+      color: $Color !important;
+    }
+  }
+  .ck-list {
+    background: $Secondary !important;
+  }
+}
+
+@mixin btn-submit {
+  border: 0;
+  background: 0;
+  box-shadow: 0;
+  padding: 0;
+  margin: 0;
+  padding: 10px 15px;
+  background: linear-gradient(to right, $Primary, $Secondary);
+  color: $Color;
+  display: inline-block;
+  box-shadow: 0px 2px 2px $Black;
+  cursor: pointer;
+  margin-right: 1rem;
+  &:hover {
+    background: $Secondary;
+  }
+  a {
+    color: $Color;
+    text-decoration: none;
+  }
+}
+
+@mixin skills_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 1rem;
+  margin: auto;
+  .skill {
+    width: 100%;
+    position: relative;
+    padding: 2rem 1.4rem;
+    background: linear-gradient(to bottom, $Primary, $Secondary);
+    color: $Color;
+    box-shadow: 0px 4px 20px $Black;
+    &:hover {
+      .head {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0%, 0%);
+        width: 100%;
+        background-color: lighten($Secondary, 20%);
+        text-align: center;
+        padding: 6px;
+        opacity: 0.6;
+        font-weight: 300;
+        font-size: 12px;
+        transition: all 0.4s ease;
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .list {
+        opacity: 1;
+        pointer-events: initial;
+        transition: all 0.4s ease;
+      }
+    }
+    .head {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      font-weight: 800;
+      color: $Dim;
+      transition: all 0.4s ease;
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    .list {
+      opacity: 0;
+      margin-top: 1.2rem;
+      pointer-events: none;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2rem 0rem;
+      box-shadow: 0px 6px 10px darken($Color, 100%);
+      transition: all 0.4s ease;
+      a {
+        display: block;
+        line-height: 2;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: $Color;
+        padding: 10px;
+        &:hover {
+          background-color: $Secondary;
+        }
+      }
+    }
+  }
+}
+
+@mixin projects {
+  .project {
+    box-shadow: 0px 4px 10px $Black;
+    margin-bottom: 3rem;
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    background: linear-gradient(to right, $Primary, $Secondary);
+    @media (max-width: 850px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &:nth-of-type(even) {
+      display: flex;
+      flex-direction: row-reverse;
+      @media (max-width: 850px) {
+        display: grid;
+      }
+    }
+    &:hover {
+      img {
+        transform: scale(2);
+        transition: all 0.5s ease;
+      }
+    }
+    .image {
+      position: relative;
+      width: 100%;
+      height: 66vh;
+      overflow: hidden;
+      flex: 1;
+      @media (max-width: 850px) {
+        height: 50vh;
+      }
+      h2 {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        color: $Secondary;
+        font-size: 2.8rem;
+        font-family: $Font;
+        font-weight: 900;
+        letter-spacing: 2px;
+        z-index: 1;
+      }
+      background-color: rgba($Black, 0.6);
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+        opacity: 0.6;
+      }
+    }
+    .description {
+      flex: 1;
+      padding: 10px;
+      h2 {
+        font-size: 2rem;
+        color: #eee;
+        padding: 1rem 0rem;
+        font-weight: 900;
+        border-bottom: 1px solid $Dim;
+        text-transform: uppercase;
+      }
+      p {
+        line-height: 2;
+        font-size: 1.6rem;
+        color: $Dim;
+        @media (max-width: 850px) {
+          font-size: 1rem;
+        }
+      }
+      .feedback {
+        padding: 1rem 0rem;
+        color: $Dim;
+        .increment {
+          font-size: 15px;
+          margin-left: 2px;
+          display: flex;
+          align-items: center;
+          strong {
+            font-weight: 900;
+            font-size: 2rem;
+            margin-right: 6px;
+          }
+        }
+        .like-btn {
+          background: none;
+          border: 0;
+          box-shadow: none;
+          outline: 0;
+          .like {
+            font-size: 1rem;
+            cursor: pointer;
+            color: $Dim;
+            margin-left: 4px;
+            &:hover {
+              color: lighten($Secondary, 30%);
+            }
+          }
+        }
+      }
+      .view-links {
+        padding: 1rem 0rem;
+        a {
+          padding: 10px 15px;
+          color: $Dim;
+          background: linear-gradient(to right, $Primary, $Secondary);
+          text-decoration: none;
+          &:hover {
+            background: $Primary;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}

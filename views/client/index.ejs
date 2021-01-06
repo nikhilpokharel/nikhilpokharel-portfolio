@@ -1,0 +1,186 @@
+<main class="main">
+  <section class="landing-section">
+    <img src="/public/images/right-vector.svg" alt="" class="right-vector" />
+
+    <div class="introduction">
+      <!-- profile-description -->
+      <div class="profile-description">
+        <div
+          class="description"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+        >
+          <div class="description-header">
+            <p>
+              <strong>
+                <%- introduction.profileDescription %>
+              </strong>
+            </p>
+          </div>
+          <h2 class="description-title"><%- introduction.profileName %></h2>
+          <div class="description-links">
+            <% links.forEach(link => {%>
+            <a href="<%- link.link %>"><%- link.icode %></a>
+            <% }) %>
+          </div>
+        </div>
+
+        <!-- profile-picture -->
+        <div class="profile-picture" data-aos="zoom-in" data-aos-delay="300">
+          <div class="pic">
+            <img src="<%- profileImage.profilePic %>" alt="" />
+          </div>
+          <div class="pic-description text-center">
+            <p>Javascript Developer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- hover-down -->
+    <div class="hover-down">
+      <a href="#focuses" class="down-arrow">
+        <img src="/public/images/down-arrow.svg" alt="" />
+        <p class="caption">Tap to explore</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- description-section -->
+
+  <section class="focuses" id="focuses">
+    <div class="focus-description container">
+      <div class="heading" data-aos="fade-up">
+        <h2>Frontend/Backend Focuses</h2>
+      </div>
+
+      <div
+        class="description-controller"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div class="controller active">
+          <h4><%- focus.titleOne %></h4>
+        </div>
+        <div class="controller">
+          <h4><%- focus.titleTwo %></h4>
+        </div>
+      </div>
+
+      <div class="controls" data-aos="fade-up" data-aos-delay="300">
+        <div class="control show">
+          <%- focus.descriptionOne %>
+        </div>
+        <div class="control">
+          <%- focus.descriptionTwo %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- skills-section -->
+  <section class="skills">
+    <div class="heading container" data-aos="fade-up" data-aos-delay="200">
+      <h2>Development Skills</h2>
+    </div>
+
+    <div class="all-skills container">
+      <% skills.forEach(skill => {%>
+
+      <div class="skill" data-aos="flip-left" data-aos-delay="300">
+        <div class="head">
+          <img src="<%- skill.profilePic %>" alt="" />
+          <h4><%- skill.skillTitle %></h4>
+        </div>
+        <div class="list">
+          <% skill.skillList.forEach((item,index) => {%>
+          <a href="<%- skill.skillLink[index] %>"><%- item %></a>
+          <% }) %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <!-- projects-section -->
+  <section class="wrappper projects">
+    <div class="heading" data-aos="fade-up" data-aos-delay="200">
+      <h2>Recent Projects</h2>
+    </div>
+
+    <div
+      class="swiper-container container loading"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      <div class="swiper-wrapper">
+        <% projects.forEach(project => {%>
+        <div
+          class="swiper-slide"
+          style="
+            background-image: url(<%-project.profilePic%>);
+            background-size: cover;
+          "
+        >
+          <img src="<%- project.profilePic %>" class="entity-img" />
+          <div class="content">
+            <p
+              class="title"
+              data-swiper-parallax="-30%"
+              data-swiper-parallax-scale=".7"
+            >
+              <%- project.projectName %>
+            </p>
+            <div class="navigate">
+              <a href="<%- project.projectDemo %>">Code</a>
+              <a href="<%- project.projectLink %>">View</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev swiper-button-white"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+
+    <div class="view-more container">
+      <a href="/projects">View More</a>
+    </div>
+  </section>
+
+  <!-- testimonial-section -->
+  <section class="testimonial">
+    <div class="heading" data-aos="fade-up">
+      <h2>Users Feedback</h2>
+    </div>
+    <div
+      class="owl-carousel owl-theme container"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      <% testimonial.forEach(item => {%> <% if(item.show) {%>
+      <div class="item feedback">
+        <div class="user">
+          <p><a href="<%- item.email %>"> <%- item.email %></a></p>
+          <h4><%- item.fullName %></h4>
+        </div>
+        <blockquote>
+          <div class="feedback-msg">
+            <span>"</span>
+            <%- item.feedback %>
+            <span>"</span>
+          </div>
+        </blockquote>
+        <div class="user">
+          <p><strong>Thank You</strong></p>
+        </div>
+      </div>
+      <% } %> <% }) %>
+    </div>
+  </section>
+</main>

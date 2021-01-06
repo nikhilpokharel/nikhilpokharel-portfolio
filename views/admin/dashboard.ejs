@@ -1,0 +1,177 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>Introduce Yourself</h2>
+    </div>
+    <form
+      id="form-submit"
+      action="/add-new/introduction/<%- introduction._id %>?_method=PUT"
+      method="POST"
+      class="row align-items-center"
+    >
+      <div class="col-md-5">
+        <input
+          type="text"
+          placeholder="user-profile-name"
+          value="<%- introduction.profileName %>"
+          name="profileName"
+          class="form-control form-input-fields mb-1"
+        />
+      </div>
+      <div class="col-md-5 from-group editor_main">
+        <input
+          type="text"
+          placeholder="user-profile-description"
+          value="<%- introduction.profileDescription %>"
+          name="profileDescription"
+          class="form-control form-input-fields mb-1"
+        />
+      </div>
+      <div class="col-md-2">
+        <input type="submit" class="btn-submit w-100 mb-1" value="Update" />
+      </div>
+    </form>
+
+    <div class="social-media-link">
+      <h4 class="home-heading">
+        Add Social Media's Link
+        <a href="/admin/datas"><i class="fa fa-pencil"></i></a>
+      </h4>
+      <form
+        id="form-submit"
+        method="POST"
+        action="/add-new/social-links"
+        class="row"
+      >
+        <div class="col-md-5">
+          <input
+            type="text"
+            class="form-control form-input-fields mb-1"
+            placeholder="fontawesome-iframe-code-here"
+            name="icode"
+          />
+        </div>
+        <div class="col-md-5">
+          <input
+            type="text"
+            class="form-control form-input-fields mb-1"
+            placeholder="link-to-current-social-media"
+            name="link"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            type="submit"
+            class="btn-submit d-inline-block w-100 mb-1"
+            value="Add"
+          />
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>Frontend / Backend Focuses</h2>
+    </div>
+
+    <form
+      action="/add-new/focuses/<%- focus._id %>?_method=PUT"
+      method="POST"
+      id="form-submit"
+      class="post-form"
+    >
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-input-fields mb-1"
+              name="titleOne"
+              value="<%- focus.titleOne %>"
+              placeholder="Your-motivation"
+            />
+          </div>
+          <div class="from-group editor_main">
+            <textarea
+              name="descriptionOne"
+              class="editor form-control"
+              cols="30"
+              rows="10"
+            >
+<%- focus.descriptionOne %></textarea
+            >
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-input-fields mb-1"
+              placeholder="Being Developer"
+              name="titleTwo"
+              value="<%- focus.titleTwo %>"
+            />
+          </div>
+          <div class="from-group editor_main">
+            <textarea
+              name="descriptionTwo"
+              class="editor form-control"
+              cols="30"
+              rows="10"
+            >
+<%- focus.descriptionTwo %></textarea
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-submit">Update</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>
+        Development Skills
+        <a href="/admin/datas"><i class="fa fa-pencil"></i></a>
+      </h2>
+    </div>
+    <form
+      id="form-submit"
+      action="/add-new/skills"
+      class="skill-form"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      <h4 class="home-heading">Skill Title</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <input
+            type="text"
+            placeholder="Your Skill Title"
+            class="form-control form-input-fields mb-1"
+            name="skillTitle"
+          />
+        </div>
+        <div class="col-md-6">
+          <input
+            type="file"
+            placeholder="Title Image"
+            class="form-control form-input-fields mb-1"
+            name="profilePic"
+          />
+        </div>
+      </div>
+      <h4 class="home-heading">
+        Skill List <a class="add" id="add-skills">+</a>
+      </h4>
+      <div class="skill-set"></div>
+      <div class="from-group">
+        <button type="submit" class="btn-submit">Add Skill</button>
+      </div>
+    </form>
+  </section>
+</main>

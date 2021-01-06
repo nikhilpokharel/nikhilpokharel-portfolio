@@ -1,0 +1,376 @@
+@import "./var";
+@import "./mixin";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: $Font;
+  overflow-x: hidden;
+  background: linear-gradient(to right, $Primary, $Secondary);
+}
+
+.dashboard-header {
+  .top-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 16px;
+    background: linear-gradient(to right, $Primary, $Secondary);
+    box-shadow: 0px 2px 4px $Black;
+    display: flex;
+    z-index: 100;
+
+    .title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: $Color;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .controller {
+      margin-left: auto;
+      display: flex;
+      .segment {
+        position: relative;
+        .control {
+          padding: 4px 8px;
+          margin-left: 1rem;
+          cursor: pointer;
+          border: 1px solid lighten($Secondary, 20%);
+          color: $Color;
+        }
+        .control-element {
+          width: 300px;
+          margin: auto;
+          position: absolute;
+          display: none;
+          top: 100%;
+          right: -33%;
+          margin-top: 1rem;
+          padding: 1rem;
+          background: $Primary;
+          input {
+            width: 100%;
+            padding: 6px;
+          }
+          button {
+            width: 100%;
+            border: 0;
+            background: none;
+          }
+          a,
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            padding: 10px;
+            color: $Color;
+            margin-left: 0;
+            border: none;
+            border: 1px solid $Secondary;
+            i {
+              margin-right: 10px;
+            }
+            &:hover {
+              background: $Secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+  .toggle-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 14px 15px;
+    color: $Color;
+    font-size: 1.2rem;
+    background-color: $Secondary;
+    cursor: pointer;
+    &:nth-of-type(1) {
+      z-index: 10000;
+    }
+  }
+  .dashboard-nav {
+    transition: all 0.5s ease;
+    width: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, $Primary, $Secondary);
+    box-shadow: 0px -4px 6px $Black;
+    min-height: 100vh;
+    height: 100vh;
+    z-index: 1000;
+
+    a {
+      text-decoration: none;
+      color: $Color;
+    }
+    a.nav-branding {
+      .logo-link {
+        display: none;
+        padding: 3rem 0 1rem 0;
+        text-align: center;
+        border-bottom: 1px solid $Secondary;
+        line-height: 1;
+        h4 {
+          font-weight: 800;
+        }
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+    .nav-links {
+      margin-top: 9rem;
+      list-style: none;
+      a {
+        font-weight: 600;
+        display: flex;
+        padding: 19px 1.2rem;
+        align-items: center;
+        margin-bottom: 4px;
+        li {
+          display: none;
+          padding: 4px;
+          margin-left: 6px;
+          margin-top: 2px;
+        }
+        &:hover {
+          background-color: $Secondary;
+        }
+        &.active-link {
+          background-color: $Secondary;
+        }
+      }
+    }
+  }
+  &.expand {
+    .dashboard-nav {
+      width: 280px;
+      transition: all 0.5s ease;
+      opacity: 1;
+      transform: translate(0%, 0%);
+    }
+    .logo-link {
+      display: block !important;
+    }
+    .nav-links {
+      margin-top: 1rem;
+      a {
+        padding: 10px !important;
+      }
+      li {
+        display: block !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 765px) {
+  .dashboard-header {
+    .dashboard-nav {
+      transform: translate(-100%, 0%);
+      opacity: 0;
+    }
+  }
+}
+.main-container {
+  margin-top: 4rem;
+}
+
+.heading {
+  @include heading();
+}
+.main-editor {
+  @include editor_main();
+}
+.btn-submit {
+  @include btn-submit();
+}
+.form-input-fields {
+  background: none;
+  position: relative;
+  box-shadow: 0;
+  border: 0;
+  border: 1px solid $Secondary;
+  border-radius: 0;
+  color: $Color;
+  font-weight: 1.2rem;
+  font-weight: 800;
+  height: 100%;
+  padding: 12px;
+  &:focus {
+    background: none;
+    color: $Color;
+  }
+}
+
+.file-uploader-external {
+  label {
+    position: relative;
+    font-weight: 800;
+    color: $Primary !important;
+  }
+  a {
+    color: red;
+    position: absolute;
+    z-index: 10;
+    margin-left: 8rem;
+    margin-top: 14.5px;
+    text-decoration: none;
+    font-size: 2rem;
+    width: 100%;
+  }
+  opacity: 0.8;
+}
+
+.home-heading {
+  font-weight: 800;
+  color: $Dim;
+  padding: 1.5rem 0rem 1rem 0rem;
+  text-transform: uppercase;
+  font-family: $Font;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+  .add {
+    font-weight: 900;
+    padding: 4px 10px;
+    margin-left: 2rem;
+    border: 1px solid $Secondary;
+    cursor: pointer;
+    text-align: right;
+    &:hover {
+      background: $Secondary;
+    }
+  }
+  a {
+    color: #eeeeee;
+    margin-left: 1rem;
+  }
+}
+.remove {
+  color: red;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+}
+
+.post-form {
+  .btn_submit {
+    @include btn-submit();
+    margin: 1rem 0rem;
+  }
+  .editor_main {
+    @include editor_main();
+  }
+}
+
+.message-list {
+  .message {
+    thead {
+      th {
+        border: 2px solid $Secondary;
+        font-weight: 900;
+        font-size: 1.2rem;
+        color: $Dim;
+        background: linear-gradient(to right, $Primary, $Secondary);
+      }
+      border: 0;
+    }
+    tbody {
+      border: 0;
+      tr {
+        color: $Color;
+        font-weight: 800;
+        td {
+          border: 0;
+        }
+      }
+      .second {
+        h4 {
+          text-align: center;
+          font-weight: 900;
+          font-size: 1.2rem;
+          text-align: center;
+        }
+        p {
+          font-size: 14px;
+          line-height: 2;
+          font-weight: 400;
+        }
+      }
+    }
+    .btn-container {
+      background-color: $Secondary;
+    }
+    .btn-message-remove {
+      background: none;
+      border: 0;
+      font-weight: 900;
+      box-shadow: 0;
+      color: $Color;
+      outline: none;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.social-links {
+  .link {
+    color: $Color;
+    font-size: 3rem;
+  }
+}
+.control-data {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.control {
+  .btn {
+    padding: 0;
+    margin: 0;
+  }
+  a,
+  .btn {
+    color: $Color;
+    margin-right: 10px;
+    padding: 4px 10px;
+    background-color: $Secondary;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.skills-container {
+  .all-skills {
+    @include skills_container();
+  }
+}
+.projects-container {
+  .projects-grid {
+    @include projects();
+  }
+}

@@ -1,0 +1,125 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <section class="social-media">
+      <div class="heading">
+        <h2>Manage Social Links <a href="/admin/dashboard">+</a></h2>
+      </div>
+      <div class="social-links row">
+        <% socialMedia.forEach(links => {%>
+        <div class="col-md-3">
+          <div class="text-center">
+            <a href="<%- links.link %>" class="link"><%- links.icode %></a>
+            <div
+              class="d-flex w-100 align-items-center justify-content-center control"
+            >
+              <a href="/admin/update-social-links/<%- links._id %>"
+                ><i class="fa fa-pencil"></i
+              ></a>
+              <form
+                action="/add-new/delete-socials/<%- links._id %>?_method=DELETE"
+                class="delete-btn"
+                method="POST"
+              >
+                <button class="default btn text-white" type="Submit">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="skills-container">
+      <div class="heading">
+        <h2>Manage Skills <a href="/admin/dashboard">+</a></h2>
+      </div>
+      <div class="all-skills">
+        <% skills.forEach(skill => {%>
+
+        <div class="skill">
+          <div class="head">
+            <img src="<%- skill.profilePic %>" alt="" />
+            <h4><%- skill.skillTitle %></h4>
+          </div>
+          <div class="list">
+            <% skill.skillList.forEach((item,index) => {%>
+            <a href="<%- skill.skillLink[index] %>"><%- item %></a>
+            <% }) %>
+          </div>
+          <div
+            class="d-flex w-100 align-items-center justify-content-center control control-data"
+          >
+            <a href="/admin/update-current-skills/<%- skill._id %>"
+              ><i class="fa fa-pencil"></i
+            ></a>
+            <form
+              action="/add-new/delete-skills/<%- skill._id %>?_method=DELETE"
+              class="delete-btn"
+              method="POST"
+            >
+              <button class="default btn text-white" type="Submit">
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="projects-container">
+      <div class="heading">
+        <h2>Manage Projects <a href="/admin/projects">+</a></h2>
+      </div>
+      <div class="projects-grid">
+        <% projects.forEach(project => {%>
+
+        <div class="project">
+          <div class="image">
+            <h2><%- project.projectName %></h2>
+            <img src="<%- project.profilePic %>" alt="" />
+          </div>
+          <div class="description">
+            <h2><%- project.projectName %></h2>
+            <p>
+              <%- project.description %>
+            </p>
+            <div class="feedback">
+              <label for="like" class="like feedback-field">
+                <form
+                  action="/projects/send-love/<%- project._id %>?_method=PUT"
+                  class="send-love"
+                  style="display: flex; align-items: center;"
+                  method="POST"
+                >
+                  <p class="increment">
+                    <strong><%- project.loveCounter %></strong> People like this
+                  </p>
+                </form>
+              </label>
+            </div>
+            <div
+              class="d-flex w-100 align-items-center justify-content-center control control-data"
+            >
+              <a href="/admin/update-project/<%- project._id %>"
+                ><i class="fa fa-pencil"></i
+              ></a>
+              <form
+                action="/add-new/delete-project/<%- project._id %>?_method=DELETE"
+                class="delete-btn"
+                method="POST"
+              >
+                <button class="default btn text-white" type="Submit">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </section>
+  </section>
+</main>

@@ -1,0 +1,72 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>Projects</h2>
+    </div>
+    <form
+      class="form-commits"
+      id="form-submit"
+      method="POST"
+      action="/add-new/project-update/<%- project._id %>?_method=PUT"
+      enctype="multipart/form-data"
+    >
+      <div class="row">
+        <div class="col-md-6">
+          <%- include ('../image_upload/uploader.ejs') %>
+        </div>
+        <div
+          class="col-md-6 d-flex align-items-center justify-content-center"
+          style="flex-direction: column;"
+        >
+          <div style="margin-top: -2em; padding: 1rem 0rem;">
+            <p class="text-white text-center">
+              <strong>Previous Image</strong>
+            </p>
+            <img
+              src="<%- project.profilePic %>"
+              style="width: 300px; height: 280px; object-fit: contain;"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row pb-2">
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Project Title"
+            class="form-control form-input-fields"
+            name="projectName"
+            value="<%- project.projectName %>"
+            form-control
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Project Visit Link"
+            name="projectLink"
+            value="<%- project.projectLink %>"
+            class="form-control form-input-fields"
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Project Demo Link"
+            name="projectDemo"
+            value="<%- project.projectDemo %>"
+            class="form-control form-input-fields"
+          />
+        </div>
+      </div>
+      <%- include ('../text_editor/editor.ejs',{desc: project.description}) %>
+      <div class="form-group">
+        <div class="btn-submit">
+          <a href="/admin/dashboard">Cancel</a>
+        </div>
+        <button type="submit" class="btn-submit">Add</button>
+      </div>
+    </form>
+  </section>
+</main>

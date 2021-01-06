@@ -1,0 +1,68 @@
+<main class="main">
+  <section class="landing-section" data-aos="fade-up">
+    <img src="/public/images/right-vector.svg" alt="" class="right-vector" />
+    <div class="heading">
+      <h2>About Me</h2>
+    </div>
+    <div class="introduction about-intro container">
+      <!-- profile-description -->
+      <div class="profile-description">
+        <div class="description">
+          <div class="description-header description-about">
+            <%- about.description %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- projects-section -->
+  <section class="wrappper projects">
+    <div class="heading" data-aos="fade-up" data-aos-delay="200">
+      <h2>Recent Projects</h2>
+    </div>
+
+    <div
+      class="swiper-container container loading"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      <div class="swiper-wrapper">
+        <% projects.forEach(project => {%>
+        <div
+          class="swiper-slide"
+          style="
+            background-image: url(<%-project.profilePic%>);
+            background-size: cover;
+          "
+        >
+          <img src="<%- project.profilePic %>" class="entity-img" />
+          <div class="content">
+            <p
+              class="title"
+              data-swiper-parallax="-30%"
+              data-swiper-parallax-scale=".7"
+            >
+              <%- project.projectName %>
+            </p>
+            <div class="navigate">
+              <a href="<%- project.projectDemo %>">Code</a>
+              <a href="<%- project.projectLink %>">View</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev swiper-button-white"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+
+    <div class="view-more container">
+      <a href="/projects">View More</a>
+    </div>
+  </section>
+</main>

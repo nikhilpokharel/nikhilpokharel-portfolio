@@ -1,0 +1,45 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>Update Current Link</h2>
+    </div>
+    <div class="social-media-link">
+      <h4 class="home-heading">
+        Add Social Media's Link
+        <a href="/admin/datas"><i class="fa fa-pencil"></i></a>
+      </h4>
+      <form
+        id="form-submit"
+        method="POST"
+        action="/add-new/update-links/<%- links._id %>?_method=PUT"
+        class="row"
+      >
+        <div class="col-md-5">
+          <textarea
+            class="form-control form-input-fields p-0 m-0"
+            placeholder="fontawesome-iframe-code-here"
+            name="icode"
+          >
+<%- links.icode %></textarea
+          >
+        </div>
+        <div class="col-md-5">
+          <input
+            type="url"
+            class="form-control form-input-fields mb-1"
+            placeholder="link-to-current-social-media"
+            name="link"
+            value="<%- links.link %>"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            type="submit"
+            class="btn-submit d-inline-block w-100 mb-1"
+            value="Add"
+          />
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

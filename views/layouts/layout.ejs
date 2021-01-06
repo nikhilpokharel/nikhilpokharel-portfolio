@@ -1,0 +1,274 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title><%- routesTitle %></title>
+    <meta name="title" content="<%- routesTitle %>" />
+    <meta
+      name="description"
+      content="Being a self-taught programmer, I have continuous intention to produce a result as quick as possible, I have learned from many resources from the web.."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%- routesTitle %>" />
+    <meta
+      property="og:description"
+      content="Being a self-taught programmer, I have continuous intention to produce a result as quick as possible, I have learned from many resources from the web.."
+    />
+    <meta property="og:image" content="/public/images/preview.png" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="http://nikhilpokharel.herokuapp.com/"
+    />
+    <meta property="twitter:title" content="<%- routesTitle %>" />
+    <meta
+      property="twitter:description"
+      content="Being a self-taught programmer, I have continuous intention to produce a result as quick as possible, I have learned from many resources from the web.."
+    />
+    <meta property="twitter:image" content="/public/images/preview.png" />
+
+    <link
+      rel="shortcut icon"
+      href="/public/images/website-logo.png"
+      type="image/x-icon"
+    />
+    <!-- font-awesome-link -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <% if(pages.loginPage) {%>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <% } %> <% if(pages.admin) {%>
+    <!-- bootstrap-cdn -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <!-- image-upload-preview-library -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css"
+    />
+
+    <!-- main-style-sheet -->
+    <link rel="stylesheet" href="/public/admin_public/stylesheet/main.css" />
+    <% } else{%>
+    <link rel="stylesheet" href="/public/stylesheet/main.css" />
+
+    <!-- animation-on-scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- swipper-carousel -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <% } %>
+  </head>
+  <body id="top-scroll">
+    <% if(pages.admin) {%>
+    <header class="dashboard-header">
+      <nav class="top-nav">
+        <h4 class="title">
+          <a
+            target="_blank"
+            style="color: inherit; text-decoration: none"
+            href="/"
+            ><%- adminDetails.fullName %></a
+          >
+        </h4>
+        <div class="controller">
+          <div class="segment">
+            <i class="fa fa-search control"></i>
+            <div class="control-element">
+              <input type="text" placeholder="Search.." />
+            </div>
+          </div>
+          <div class="segment">
+            <i class="fa fa-chevron-circle-down control"></i>
+            <div class="control-element">
+              <form action="/admin/logout?_method=DELETE" method="POST">
+                <a href="/admin/setting"
+                  ><i class="fa fa-cog"></i> Account Setting</a
+                >
+                <button type="submit">
+                  <i class="fa fa-sign-out"></i> Logout
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="toggle-menu">
+        <i class="fa fa-align-left"></i>
+      </div>
+      <nav class="dashboard-nav">
+        <div class="toggle-menu">
+          <i class="fa fa-align-left"></i>
+        </div>
+
+        <!-- company-logo -->
+        <a href="/" class="nav-branding">
+          <div class="logo-link">
+            <h4>Nikhil Pokharel</h4>
+            <p>Javascript Developer</p>
+          </div>
+        </a>
+
+        <!-- all-link -->
+        <div class="nav-links">
+          <a
+            href="/admin/dashboard"
+            class="<%- pages.adminHome ? 'active-link' : '' %>"
+            title="Dashboard-Home"
+          >
+            <i class="fa fa-user-circle"></i>
+            <li>Dashboard</li>
+          </a>
+          <a
+            href="/admin/about-me"
+            class="<%- pages.adminAbout ? 'active-link' : '' %>"
+            title="Dashboard-About-Me"
+          >
+            <i class="fa fa-file-o"></i>
+            <li>About Me</li>
+          </a>
+          <a
+            href="/admin/projects"
+            class="<%- pages.adminProject ? 'active-link' : '' %>"
+            title="Dashboard-Projects"
+          >
+            <i class="fa fa-smile-o"></i>
+            <li>Add New Projects</li>
+          </a>
+          <a
+            href="/admin/datas"
+            class="<%- pages.adminData ? 'active-link' : '' %>"
+            title="Dashboard-Manage-Datas"
+          >
+            <i class="fa fa-pencil"></i>
+            <li>Manage Datas</li>
+          </a>
+          <a
+            href="/admin/Messages"
+            class="<%- pages.adminMessage ? 'active-link' : '' %>"
+            title="Dashboard-Messages"
+          >
+            <i class="fa fa-envelope-o"></i>
+            <li>Messages</li>
+          </a>
+          <% if(adminDetails.admin) {%>
+          <a
+            href="/admin/registered-users"
+            class="<%- pages.adminRegisteredUsers ? 'active-link' : '' %>"
+            title="Dashboard-Users"
+          >
+            <i class="fa fa-eye"></i>
+            <li>Registered Users</li>
+          </a>
+          <% } %>
+        </div>
+      </nav>
+    </header>
+
+    <% } else if(pages.loginPage) {%>
+    <header></header>
+    <% } else{%>
+    <header id="header">
+      <nav class="container">
+        <a href="#top-scroll" class="logo">
+          <p class="logo-header">Nikhil Pokharel</p>
+          <p class="logo-footer">Javascript Developer</p>
+        </a>
+        <div class="link-controller">
+          <i class="fa fa-align-right"></i>
+        </div>
+        <div class="nav-links">
+          <% if(user) {%>
+          <a href="/admin/dashboard" class="admin-link"><%- user.fullName %></a>
+          <% } %>
+          <a class="<%- pages.index ? 'active' : '' %>" href="/">Home</a>
+          <a class="<%- pages.about ? 'active' : '' %>" href="/about"
+            >About Me</a
+          >
+          <a class="<%- pages.project ? 'active' : '' %>" href="/projects"
+            >Projects</a
+          >
+          <a class="<%- pages.contact ? 'active' : '' %>" href="/contact"
+            >Contact Me</a
+          >
+        </div>
+      </nav>
+    </header>
+    <% } %>
+
+    <!-- main-body -->
+    <%- body %>
+
+    <!-- script-tag -->
+
+    <% if(pages.admin || pages.loginPage) {%>
+    <!-- bootstrap-required-javascript -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
+    <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+    <script src="/public/admin_public/js/script.js"></script>
+    <% } else {%>
+    <!-- page-footer -->
+    <footer class="page-footer">
+      <p>
+        All rights reserved at
+        <a href="https://nikhilpokharel9815@gmail.com"
+          >nikhilpokharel9815@gmail.com</a
+        >
+      </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- on-scroll-animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- owl-carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- swipper-carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <!-- javascript -->
+    <script src="/public/javascript/app.js"></script>
+    <% } %>
+    <script src="/public/form-validation.js"></script>
+    <script src="/public/dashboard-form.js"></script>
+  </body>
+</html>

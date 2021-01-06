@@ -1,0 +1,43 @@
+@mixin vectors {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  right: 0;
+  z-index: -1;
+}
+
+//division
+@mixin division {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  min-height: 100vh;
+  height: auto;
+}
+
+//heading
+@mixin heading {
+  h2 {
+    position: relative;
+    font-family: $Font;
+    padding: 6rem 0rem;
+    color: $White;
+    font-size: 4rem;
+    text-align: center;
+    text-shadow: -4px 2px 4px $Secondary;
+    @media (max-width: 850px) {
+      padding: 3rem 0rem;
+      font-size: 2rem;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 10px;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $Secondary;
+    }
+  }
+}

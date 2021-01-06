@@ -1,0 +1,60 @@
+<!-- @format -->
+
+<main class="main">
+  <div class="col-md-6 m-auto alert-messages">
+    <% if(email_err.length) {%>
+    <p class="alert show"><%- email_err %></p>
+    <% } %>
+    <p class="alert"></p>
+  </div>
+  <section class="login-register-page wrapper">
+    <img src="/public/images/right-vector.svg" class="right-vector" />
+    <div class="heading">
+      <h2 class="request-for">Register</h2>
+    </div>
+
+    <form
+      action="/user/register"
+      class="col-md-6 m-auto user-form register-form"
+      id="main-form"
+      method="POST"
+    >
+      <div class="form-group">
+        <label for="text">Full Name</label>
+        <input type="text" class="form-control" id="fullname" name="fullName" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" />
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="admin">Admin Approval</label>
+          <input
+            type="checkbox"
+            class="form-control"
+            value="true"
+            name="admin"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="form-btn" value="Register" />
+      </div>
+      <div class="form-group dialog">
+        <a href="/admin/dashboard">Back To Dashboard</a>
+        /
+        <a href="/">Back to home</a>
+      </div>
+    </form>
+  </section>
+</main>

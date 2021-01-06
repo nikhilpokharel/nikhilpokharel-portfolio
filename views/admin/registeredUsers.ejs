@@ -1,0 +1,45 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>All Users Registered <a href="/user/register">+</a></h2>
+    </div>
+
+    <div class="message-list">
+      <div class="message row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">S.n</th>
+              <th scope="col">Username</th>
+              <th scope="col">Email</th>
+              <th scope="col">Manage</th>
+            </tr>
+          </thead>
+          <% registeredUsers.forEach((user,index) => {%>
+          <tbody>
+            <tr>
+              <td><%- index + 1 %>.</td>
+              <td><%- user.fullName %></td>
+              <td>
+                <%- user.email %> <% if(activeUser == user.email) {%>
+                <span class="text-success">(active)</span>
+                <% } %>
+              </td>
+              <td class="btn-container">
+                <form
+                  action="/admin/registered-users/delete/<%- user._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button type="submit" class="btn-message-remove">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+          <%})%>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

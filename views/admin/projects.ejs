@@ -1,0 +1,50 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>Projects</h2>
+    </div>
+    <form
+      class="form-commits"
+      id="form-submit"
+      method="POST"
+      action="/add-new/projects"
+      enctype="multipart/form-data"
+    >
+      <%- include ('image_upload/uploader.ejs') %>
+      <div class="row pb-2">
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Project Title"
+            class="form-control form-input-fields"
+            name="projectName"
+            form-control
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Project Visit Link"
+            name="projectLink"
+            class="form-control form-input-fields"
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Project Demo Link"
+            name="projectDemo"
+            class="form-control form-input-fields"
+          />
+        </div>
+      </div>
+      <%- include ('text_editor/editor.ejs',{desc: ''}) %>
+      <div class="form-group">
+        <div class="btn-submit">
+          <a href="/admin/dashboard">Cancel</a>
+        </div>
+        <button type="submit" class="btn-submit">Add</button>
+      </div>
+    </form>
+  </section>
+</main>

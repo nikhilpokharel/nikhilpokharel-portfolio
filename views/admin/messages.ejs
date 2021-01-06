@@ -1,0 +1,73 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>User's Feedback</h2>
+    </div>
+
+    <div class="message-list">
+      <div class="message row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">S.n</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Manage</th>
+            </tr>
+          </thead>
+          <% allMessage.forEach((msg,index) => {%>
+          <tbody>
+            <tr>
+              <th scope="row"><%- index + 1 %>.</th>
+              <td><%- msg.fullName %></td>
+              <td><%- msg.email %></td>
+              <td class="btn-container d-flex justify-content-around">
+                <form
+                  action="/admin/messages/approved/<%- msg._id %>?_method=PUT"
+                  method="POST"
+                >
+                  <% if(msg.show) {%>
+                  <input
+                    type="checkbox"
+                    class="mr-2"
+                    checked
+                    value="true"
+                    name="show"
+                  />
+                  <% } else{%>
+                  <input
+                    type="checkbox"
+                    class="mr-2"
+                    value="true"
+                    name="show"
+                  />
+                  <% } %>
+                  <button type="submit" class="btn-message-remove">
+                    Approve-Display
+                  </button>
+                </form>
+                <form
+                  action="/admin/messages/delete/<%- msg._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button type="submit" class="btn-message-remove">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <tr class="second">
+              <td colspan="4">
+                <h4 class="text-left">FEEDBACK</h4>
+                <p>
+                  <%- msg.feedback %>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+          <%})%>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

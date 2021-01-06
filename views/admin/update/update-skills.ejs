@@ -1,0 +1,74 @@
+<main class="main-container container-fluid">
+  <section class="col-md-11 ml-auto">
+    <div class="heading">
+      <h2>Update Current Skills</h2>
+    </div>
+    <form
+      id="form-submit"
+      action="/add-new/update-skills/<%- skills._id %>?_method=PUT"
+      class="skill-form"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      <h4 class="home-heading">Skill Title</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <input
+            type="text"
+            placeholder="Your Skill Title"
+            class="form-control form-input-fields mb-1"
+            name="skillTitle"
+            value="<%- skills.skillTitle %>"
+          />
+        </div>
+        <div class="col-md-6">
+          <input
+            type="file"
+            placeholder="Title Image"
+            class="form-control form-input-fields mb-1"
+            name="profilePic"
+          />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <h4 class="home-heading" style="margin-left: -14px;">Current Image</h4>
+        <img
+          src="<%- skills.profilePic %>"
+          style="width: 100px; height: 100px;"
+          alt=""
+        />
+      </div>
+      <h4 class="home-heading">
+        Skill List
+      </h4>
+      <div class="skill-set">
+        <% skills.skillList.forEach((link,index) => {%>
+        <div class="row my-2 skills">
+          <div class="col-md-5">
+            <input
+              type="text"
+              placeholder="Skills Link (https://nikhilpokharel.com.np)"
+              class="form-control form-input-fields mb-1"
+              name="skillLink"
+              value="<%- skills.skillLink[index] %>"
+            />
+          </div>
+          <div class="col-md-5">
+            <input
+              type="text"
+              placeholder="Skill Name"
+              name="skillList"
+              value="<%- link %>"
+              class="form-control form-input-fields mb-1"
+            />
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <div class="from-group py-3">
+        <a href="/admin/datas" class="btn-submit">Cancel</a>
+        <button type="submit" class="btn-submit">Add Skill</button>
+      </div>
+    </form>
+  </section>
+</main>
